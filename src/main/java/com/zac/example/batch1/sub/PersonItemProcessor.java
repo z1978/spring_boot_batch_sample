@@ -1,7 +1,9 @@
-package com.example.item;
+package com.zac.example.batch1.sub;
 
 
 import org.springframework.batch.item.ItemProcessor;
+
+import com.example.item.Person;
 
 public class PersonItemProcessor implements ItemProcessor<Person, Person> {
 

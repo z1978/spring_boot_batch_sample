@@ -1,8 +1,7 @@
-package com.example.batch;
+package com.zac.example.batch1;
 
-import com.example.item.JobCompletionNotificationListener;
-import com.example.item.Person;
-import com.example.item.PersonItemProcessor;
+import javax.sql.DataSource;
+
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.Step;
@@ -13,17 +12,17 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
-import org.springframework.batch.item.file.LineMapper;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
-import org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
-import javax.sql.DataSource;
+import com.example.item.Person;
+import com.zac.example.batch1.sub.JobCompletionNotificationListener;
+import com.zac.example.batch1.sub.PersonItemProcessor;
 
 
 @Configuration
@@ -94,7 +93,7 @@ public class BatchConfiguration {
     public Job importUserJob() {
         return jobBuilderFactory.get("importUserJob")
                 .incrementer(new RunIdIncrementer())
-                .listener(listener())
+//                .listener(listener())
                 .flow(step1())
                 .end()
                 .build();

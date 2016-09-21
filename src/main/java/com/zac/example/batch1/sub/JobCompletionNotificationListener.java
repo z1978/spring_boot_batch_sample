@@ -1,4 +1,4 @@
-package com.example.item;
+package com.zac.example.batch1.sub;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
